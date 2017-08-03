@@ -82,7 +82,7 @@ Arguments and options are both optional params and can be ignored in some uses. 
 
 > Note: `Key` is also known as the `id`, it may be referenced as either or.
 
-> Note: Some tables have a `data` which contains json, this is automatically decoded into an array and presented as extra layers.
+> Note: Some tables have a `data` column which contains json, this is automatically decoded into an array and presented as extra layers.
 
 The main command is:
 
