@@ -1,0 +1,32 @@
+{
+    "name": "viion/libra-php",
+    "type": "library",
+    "keywords": ["ffxiv","php","libra"],
+    "description": "A PHP Library to read the Final Fantasy XIV Libra SQLite file and output JSON",
+    "homepage": "https://github.com/viion/libra-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josh Freeman",
+            "email": "josh@viion.co.uk",
+            "homepage": "http://xivdb.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Libra\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Libra\\Tests\\": "tests/"
+        }
+    }
+}
