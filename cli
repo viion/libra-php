@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+// composer autoload
+include_once __DIR__ . '/vendor/autoload.php';
+
+$cli = new \Libra\Cli\CliHandler($argv);
+
+// init api
+$api = new \Libra\Api();
+$api->setOption('json', $cli->getOption('json'))
+    ->setOption('json_pretty', $cli->getOption('json_pretty'))
+    ->setOption('dump', $cli->getOption('dump'))
+    ->setOption('output', $cli->getOption('output', 1));
+
+// switch
+$data = [];
+switch($cli->getAction()) {
+    case 'tablelist':
+        $data = $api->getTableList();
+        break;
+    
+    case 'version':
+        $data = $api->getVersionData();
+        break;
+    
+    case 'data':
+        $data = $api->getTableData(
+            $cli->getParameter('table'),
+            $cli->getParameter('columns'),
+            $cli->getParameter('where'),
+            $cli->getParameter('limit')
+        );
+        break;
+}
+
+if ($api->isOptionEnabled('output')) {
+    print_r($data);
+}
