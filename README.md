@@ -40,6 +40,7 @@ $tables = $api->getTableList();
 
 - `setOption` Set API Options, eg:
   - `('json', false|true)` enable or disable json response
+  - View more options in the next section
 
 - `getTableList` Get a list of available tables
 
@@ -75,7 +76,7 @@ Arguments and options are both optional params and can be ignored in some uses. 
 - `php cli action=<action> dump=1` - Dump the results into the `/dump/*` folder
 - `php cli action=<action> output=1` - Enable cli print (default on for cli)
 
-> Note: Dumping
+> Note: Dumping files appends on a unix timestamp to avoid overwriting existing json files for the same function.
 
 ### Print table data
 
