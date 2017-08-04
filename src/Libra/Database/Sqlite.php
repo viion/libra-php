@@ -4,9 +4,7 @@ namespace Libra\Database;
 
 use Libra\App\Config;
 use Libra\Exceptions\{
-    SqliteConnectionFailedException,
-    SqliteMissingException,
-    SqliteQueryFailedException
+    SqliteConnectionFailedException, SqliteInvalidQueryException, SqliteMissingException, SqliteQueryFailedException
 };
 
 /**
@@ -63,12 +61,16 @@ class Sqlite
         try {
             // run query
             $query = $this->instance->prepare($sql);
+            
+            if (!$query) {
+                throw new SqliteInvalidQueryException(null, $sql);
+            }
             $query->execute();
     
             $results = [];
             foreach($query->fetchAll(\PDO::FETCH_ASSOC) as $i => $result) {
                 foreach($result as $column => $value) {
-                    if ($value[0] == '{') {
+                    if ($value && $value[0] == '{') {
                         $value = json_decode($value, true);
                     }
                     

@@ -32,6 +32,11 @@ switch($cli->getAction()) {
             $cli->getParameter('limit')
         );
         break;
+        
+    case 'dumpall':
+        $api->dumpAll();
+        $data = 'All sqlite data extracted to jsons';
+        break;
 }
 
 if ($api->isOptionEnabled('output')) {

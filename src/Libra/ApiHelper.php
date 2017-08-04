@@ -62,13 +62,13 @@ class ApiHelper
      * @param bool $filename
      * @return string
      */
-    protected function respond($data, $filename = false)
+    protected function respond($data, $filename = false, $forceSave = false)
     {
         // json option
         $jsonOption = $this->isOptionEnabled('json_pretty') ? JSON_PRETTY_PRINT : false;
         
         // if to dump the data or not
-        if ($this->isOptionEnabled('dump')) {
+        if ($this->isOptionEnabled('dump') || $forceSave) {
             $filename = sprintf('%s_%s.json', $filename, time());
             file_put_contents(Config::DUMP_PATH .'/'. $filename, json_encode($data, $jsonOption));
         }

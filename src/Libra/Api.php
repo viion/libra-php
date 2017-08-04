@@ -1,6 +1,7 @@
 <?php
 
 namespace Libra;
+use Libra\App\Config;
 
 /**
  * Class Api
@@ -62,5 +63,26 @@ class Api extends ApiHelper
         
         $data = $this->sqlite->query($sql);
         return $this->respond($data, __FUNCTION__);
+    }
+    
+    public function dumpAll()
+    {
+        $tables = $this->getTableList();
+        
+        // loop through all tables and dump everything
+        foreach($tables as $table) {
+            echo "Extract: ". $table ."\n";
+            $data = $this->sqlite->query('SELECT * FROM '. $table);
+            
+            $folder = Config::DUMP_PATH .'/json/';
+            if (!is_dir($folder)) {
+                mkdir($folder, 0777, true);
+            }
+            
+            file_put_contents($folder . $table .'.json', json_encode($data));
+            echo "> Saved: ". $table ."\n";
+            
+            unset($data);
+        }
     }
 }

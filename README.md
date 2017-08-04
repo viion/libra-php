@@ -46,6 +46,8 @@ $tables = $api->getTableList();
 
 - `getTableData` Get data from a table
     - `($table, $columns = "*", $where = false, $limit = false)` Valid options
+    
+- `dumpAll()` Dump all data into jsons
 
 
 ## Using the CLI Component
@@ -68,6 +70,7 @@ Arguments and options are both optional params and can be ignored in some uses. 
         - `columns=<col>,<col>,<col>`
         - `where="statement"`
         - `limit=<start>,<length>`
+- `php cli action=dumpall` Dump all data to jsons, you will need a lot of memory for this (1gb+)
         
 **Options**
 
