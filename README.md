@@ -52,7 +52,6 @@ $tables = $api->getTableList();
     
 - `dumpAll()` Dump all data into jsons
 
-
 ## Using the CLI Component
 
 You can run the API on the cli very easily, this can be done in the form of:
@@ -74,6 +73,8 @@ Arguments and options are both optional params and can be ignored in some uses. 
         - `where="statement"`
         - `limit=<start>,<length>`
 - `php cli action=dumpall` Dump all data to jsons, you will need a lot of memory for this (1gb+)
+    - Options:
+        - `chunks=<size>` Dumping everything can provide large files, this can be broken up to chunks of a size of your choosing, eg: `chunks=2500` to create a new file every 2500 entries in the json
         
 **Options**
 

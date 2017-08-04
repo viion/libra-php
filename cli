@@ -11,6 +11,7 @@ $api = new \Libra\Api();
 $api->setOption('json', $cli->getOption('json'))
     ->setOption('json_pretty', $cli->getOption('json_pretty'))
     ->setOption('dump', $cli->getOption('dump'))
+    ->setOption('chunks', $cli->getOption('chunks'))
     ->setOption('output', $cli->getOption('output', 1));
 
 // switch

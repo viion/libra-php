@@ -35,6 +35,7 @@ class CliHandler
                 case 'json':
                 case 'json_pretty':
                 case 'dump':
+                case 'chunks':
                 case 'output':
                     $this->addOption($option, $value);
                     break;

@@ -72,7 +72,6 @@ class Api extends ApiHelper
         
         // loop through all tables and dump everything
         foreach($tables as $table) {
-            echo "Extract: ". $table ."\n";
             $data = $this->sqlite->query('SELECT * FROM '. $table);
             
             $folder = Config::DUMP_PATH .'/json/';
@@ -80,8 +79,15 @@ class Api extends ApiHelper
                 mkdir($folder, 0777, true);
             }
             
-            file_put_contents($folder . $table .'.json', json_encode($data, $jsonOption));
-            echo "> Saved: ". $table ."\n";
+            if ($chunkSize = $this->getOption('chunks')) {
+                foreach(array_chunk($data, $chunkSize) as $i => $chunk) {
+                    file_put_contents($folder . $table .'_'. $i .'.json', json_encode($chunk, $jsonOption));
+                    echo "> Saved: ". $table .' '. $i ." (Size: ". $chunkSize .")\n";
+                }
+            } else {
+                file_put_contents($folder . $table .'.json', json_encode($data, $jsonOption));
+                echo "> Saved: ". $table ."\n";
+            }
             
             unset($data);
         }

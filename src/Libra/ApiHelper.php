@@ -43,6 +43,15 @@ class ApiHelper
         $this->options->{$option} = $value;
         return $this;
     }
+
+    /**
+     * @param $option
+     * @return string|bool
+     */
+    public function getOption($option)
+    {
+        return $this->options->{$option} ?? false;
+    }
     
     /**
      * Is an option enabled?
