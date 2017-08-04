@@ -67,6 +67,7 @@ class Api extends ApiHelper
     
     public function dumpAll()
     {
+        $jsonOption = $this->isOptionEnabled('json_pretty') ? JSON_PRETTY_PRINT : false;
         $tables = $this->getTableList();
         
         // loop through all tables and dump everything
@@ -79,7 +80,7 @@ class Api extends ApiHelper
                 mkdir($folder, 0777, true);
             }
             
-            file_put_contents($folder . $table .'.json', json_encode($data));
+            file_put_contents($folder . $table .'.json', json_encode($data, $jsonOption));
             echo "> Saved: ". $table ."\n";
             
             unset($data);
