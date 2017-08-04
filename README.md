@@ -23,13 +23,16 @@ ___
 
 ## Getting Started
 
-Install via composer:
+Download the repo to run in the command line for stand alone use.
+> Note: If you download the repo, you must have composer install and will have to run `composer install` within the repo to download `PHPUnit` and build Namespaces.
+
+For use inside web applications, use composer:
 
 ```php
 composer require viion/libra-php
 ```
 
-Simple usage:
+Simple usage inside a web application
 
 ```php
 $api = new Libra\Api();
