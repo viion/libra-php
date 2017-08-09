@@ -49,7 +49,7 @@ class Api extends ApiHelper
         }
         
         $data = $this->sqlite->query($sql);
-        return $this->respond($data, __FUNCTION__);
+        return $this->respond($data, $table);
     }
     
     /**
