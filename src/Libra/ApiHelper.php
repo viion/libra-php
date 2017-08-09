@@ -78,7 +78,7 @@ class ApiHelper
         
         // if to dump the data or not
         if ($this->isOptionEnabled('dump') || $forceSave) {
-            $filename = sprintf('%s_%s.json', $filename, time());
+            $filename = sprintf('%s_%s.json', $filename, date('Y-m-d_H-i-s'));
             file_put_contents(Config::DUMP_PATH .'/'. $filename, json_encode($data, $jsonOption));
         }
         
