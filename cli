@@ -41,5 +41,5 @@ switch($cli->getAction()) {
 }
 
 if ($api->isOptionEnabled('output')) {
-    print_r($data);
+    print_r($data ? $data : "Error: No data, please use one of the following actions: tablelist, version, data or dumpall.\n\n");
 }
