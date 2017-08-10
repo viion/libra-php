@@ -24,7 +24,7 @@ class Api extends ApiHelper
             $data[] = $table['tbl_name'];
         }
         
-        return $this->respond($data, __FUNCTION__);
+        return $this->respond($data, 'table_list');
     }
     
     /**
@@ -62,9 +62,12 @@ class Api extends ApiHelper
         $sql = "SELECT * FROM app_data";
         
         $data = $this->sqlite->query($sql);
-        return $this->respond($data, __FUNCTION__);
+        return $this->respond($data, 'version_data');
     }
     
+    /**
+     * Dump everything!
+     */
     public function dumpAll()
     {
         $jsonOption = $this->isOptionEnabled('json_pretty') ? JSON_PRETTY_PRINT : false;
