@@ -26,9 +26,9 @@ class ApiHelper
     /**
      * Api constructor.
      */
-    function __construct()
+    function __construct($sqliteFile = null)
     {
-        $this->sqlite = new Sqlite();
+        $this->sqlite = new Sqlite($sqliteFile ?: Config::SQLITE_FILE);
         $this->options = (Object)$this->options;
     }
     

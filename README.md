@@ -39,6 +39,12 @@ $api = new Libra\Api();
 $tables = $api->getTableList();
 ```
 
+By default it will look for the sqlite file in the `db` folder, if you are extending this class from your application you can provide the sqlite path+file in the `Api()` constructor, eg:
+
+```php
+$api = new Libra\Api('path/to/your/file/app_data.sqlite');
+```
+
 ## Methods
 
 - `setOption` Set API Options, eg:

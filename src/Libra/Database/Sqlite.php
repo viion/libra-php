@@ -16,30 +16,26 @@ class Sqlite
 {
     /** @var \PDO */
     private $instance;
-    
+
     /**
      * Sqlite constructor.
-     */
-    function __construct()
-    {
-        $this->connect();
-    }
-    
-    /**
-     * Connect to the sqlite file
      *
+     * Connects to the sqlite file
+     *
+     * @param $sqliteFile
      * @throws SqliteConnectionFailedException
+     * @throws SqliteMissingException
      */
-    protected function connect()
+    function __construct($sqliteFile)
     {
-        if (!file_exists(Config::SQLITE_FILE)) {
+        if (!file_exists($sqliteFile)) {
             throw new SqliteMissingException();
         }
-        
+
         try {
             // connect to sqlite file
-            $this->instance = new \PDO('sqlite:'. Config::SQLITE_FILE);
-    
+            $this->instance = new \PDO('sqlite:'. $sqliteFile);
+
             // connection failed
             if (!$this->instance) {
                 throw new SqliteConnectionFailedException();
