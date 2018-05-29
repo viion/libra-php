@@ -1,3 +1,9 @@
+# DEPRECATED
+
+Square-Enix have officially discontinued the Libra APP. The new FFXIV Companion App will take its place. I plan to builda suite of tools which will extract from the new app, so this means this repository will no longer update and will be moved to `viion-misc` soon
+
+---
+
 # Libra PHP Library
 
 A simple PHP library to read the Final Fantasy XIV Libra SQLite file and output JSON.
